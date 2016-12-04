@@ -9,7 +9,7 @@ typedef struct binary_search_tree
 }tree;
 
 void insert(tree *, tree *);
-tree *createNewNode();
+tree *create_new_node();
 void preorder(tree *);
 void postorder(tree *);
 void inorder(tree *);
@@ -18,9 +18,9 @@ void inorder(tree *);
 int main()
 {
   int choice;
-  tree *newNode, *root, *temp, *parent;
+  tree *new_node, *root;
   root = NULL;
-  printf("\nBinary search program : ");
+  printf("\nBinary search tree: ");
   do
   {
     printf("\n1.Create");
@@ -33,18 +33,18 @@ int main()
   switch(choice)
   {
    case 1:
-          newNode = createNewNode();
-          printf("\nEnter data to be inserted");
-          scanf("%d",&newNode->data);
+          new_node = create_new_node();
+          printf("\nEnter data to be inserted: ");
+          scanf("%d",&new_node->data);
 
           if(root == NULL)
-             root = newNode;
+             root = new_node;
           else
-             insert(root, newNode);
+             insert(root, new_node);
           break;
   case 2:
          if(root == NULL)
-           printf("\nTree is empty. Please create a new one.");
+           printf("\nThe tree is empty. Please create a new one.");
          else
            {
              printf("\n Inorder: ");
@@ -61,36 +61,36 @@ return 0;
 }
 
 
-tree* createNewNode()
+tree* create_new_node()
 {
-  tree *newNode;
-  newNode = (tree *) malloc(sizeof(tree));
-  newNode -> left = NULL;
-  newNode -> right = NULL;
-  return newNode;
+  tree *new_node;
+  new_node = (tree *) malloc(sizeof(tree));
+  new_node -> left = NULL;
+  new_node -> right = NULL;
+  return new_node;
 }
 
 
-void insert(tree *root,tree *newNode)
+void insert(tree *root,tree *new_node)
 {
   if(root == NULL)
   {
-   root = newNode;
+   root = new_node;
   }
-  if(newNode->data <root->data)
+  if(new_node->data <root->data)
   {
    if(root->left == NULL)
-      root->left = newNode;
+      root->left = new_node;
    else
-      insert(root->left, newNode);
+      insert(root->left, new_node);
   }
 
-  if(newNode->data > root->data)
+  if(new_node->data > root->data)
   {
    if(root->right == NULL)
-      root->right = newNode;
+      root->right = new_node;
    else 
-      insert(root->right, newNode);
+      insert(root->right, new_node);
   }
 }
 
